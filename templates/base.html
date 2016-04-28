@@ -1,0 +1,116 @@
+<html lang='en'>
+  <head>
+
+    <link type='text/css' href='/static/css/bootstrap.css' rel='stylesheet'>
+    <link type='text/css' href='/static/css/style.css' rel='stylesheet'>
+
+    <style>
+
+        table, th, td {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 11px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: white;
+        }
+
+        td a {
+            color: #0088cc;
+            cursor: pointer;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+    </style>
+
+    {% block css %}
+    {% endblock %}
+
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script type='text/javascript' src='/static/js/bootstrap.js'></script>
+    <script type='text/javascript'>
+
+      function getTrackList() {
+          var query_value = document.getElementById('search_input').value;
+          query_value = query_value.split(' ').join('+');
+          document.getElementById('track_lists').innerHTML = "<div id='loading_gif'><img src='/static/images/loading.gif'></div>";
+          $.ajax({
+              url: '/search/',
+              type: 'POST',
+              data: {'query': query_value},
+              success: function(data) {
+                  var track_list = ''
+                  $.each(data.tracklist, function(index, key) {
+                      track_list += '<tr><td>' + key.title + '</td><td>' + key.artist + '</td><td>' + key.duration + '</td><td>' + key.genre + '</td><td><a>Play</a></td></tr>';
+                  });
+                  document.getElementById('track_lists').innerHTML = '<table><thead><tr><th>TITLE</th><th>ARTIST</th><th>TIME</th><th>GENRE</th><th>LISTEN</th></tr></thead><tbody>' + track_list + '</tbody></table>';
+              },
+              error: function() {
+                  alert('Something wrong!');
+              }
+          });
+          return true;
+      };
+
+    </script>
+
+    {% block extra-js %}
+    {% endblock %}
+
+  </head>
+  <body>
+
+    <nav class='navbar navbar-default'>
+      <div class='container-fluid'>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class='navbar-header'>
+          <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1' aria-expanded='false'>
+            <span class='sr-only'>Toggle navigation</span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <a class='navbar-brand' href='/'>ZEP</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
+          <ul class='nav navbar-nav'>
+            <li><a href='/'>just music.</a></li>
+          </ul>
+          <form class='navbar-form navbar-right' onsubmit='return false;' role='search'>
+            <div class='form-group'>
+              <input type='text' class='form-control' id='search_input' placeholder='Songs, artists, or albums'>
+            </div>
+            <button type='submit' class='btn btn-default' onclick='getTrackList();'>Submit</button>
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li class='dropdown'>
+              <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Dropdown <span class='caret'></span></a>
+              <ul class='dropdown-menu'>
+                <li><a href='#'>Action</a></li>
+                <li><a href='#'>Another action</a></li>
+                <li><a href='#'>Something else here</a></li>
+                <li role='separator' class='divider'></li>
+                <li><a href='#'>Separated link</a></li>
+                <li role='separator' class='divider'></li>
+                <li><a href='#'>One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    {% block body %}
+    {% endblock %}
+
+  </body>
+</html>

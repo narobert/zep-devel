@@ -10,7 +10,30 @@
 
   <div class='container-fluid'>
     <div class='row'>
-      <div class='col-md-12'><div id='track_lists'></div></div>
+      {% if query_results %}
+      <table>
+        <thead>
+          <tr>
+            <th>TITLE</th>
+            <th>ARTIST</th>
+            <th>TIME</th>
+            <th>GENRE</th>
+            <th>LISTEN</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for q in query_results %}
+            <tr>
+              <td>{{q.title}}</td>
+              <td>{{q.artist}}</td>
+              <td>{{q.duration}}</td>
+              <td>{{q.genre}}</td>
+              <td><a>Play</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
     </div>
   </div>
 

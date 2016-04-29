@@ -17,11 +17,10 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 # Imported views from apps
-from vkconfig import views as vkconfig_views
+from vkconfig.views import DashboardList
 
 urlpatterns = [
-    url(r'^$', vkconfig_views.dashboard, name='get_dashboard'),
-    url(r'^search/', vkconfig_views.search, name='search'),
+    url(r'^$', DashboardList.as_view(), name='get_dashboard'),
     url(r'^api/', include('api.urls')),
 
     # Admin page to view models

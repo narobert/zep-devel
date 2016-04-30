@@ -125,5 +125,5 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 PUBLIC_DIR = os.path.join(BASE_DIR, 'public')
 
-ACCESS_TOKEN = '7a4907e3c7ee486f2e335f8bab4ecd66b73807aaa8dae5aff3bcb2768eee81794cd10fb04b5ed72ad13403fe6a52a'
+ACCESS_TOKEN = '932fe2ed747a30758958eaa4f901db3d703937cda34a0a50eddb627802b1a8f3e8880950a964c834c3d99'
 BASE_URL = 'http://ec2-52-27-228-37.us-west-2.compute.amazonaws.com/'

@@ -36,6 +36,7 @@ class DashboardList(TemplateView):
             for d in data:
                 d['title'] = self.trimStr(d.get('title', None))
                 d['artist'] = self.trimStr(d.get('artist', None))
+                d['durationSeconds'] = d.get('duration', None)
                 d['duration'] = self.getDuration(d.get('duration', None))
                 d['genre'] = self.getGenre(d.get('genre', None))
             return data

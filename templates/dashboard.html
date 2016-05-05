@@ -39,7 +39,33 @@
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-md-2'>
-          Hello
+          <table>
+            <thead>
+              <tr>
+                <th>MENU</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Search</td>
+              </tr>
+              <tr>
+                <td>Dashboard</td>
+              </tr>
+              <tr>
+                <td>Playlist 1</td>
+              </tr>
+              <tr>
+                <td>Playlist 2</td>
+              </tr>
+              <tr>
+                <td>New Playlist</td>
+              </tr>
+			  <tr>
+                <td>Settings</td>
+              </tr>  
+            </tbody>
+          </table>
         </div>
         <div class='col-md-10'>
           <div id='query_results'>
@@ -51,17 +77,15 @@
                   <th>ARTIST</th>
                   <th>TIME</th>
                   <th>GENRE</th>
-                  <th>LISTEN</th>
                 </tr>
               </thead>
               <tbody>
                 {% for q in query_results %}
-                  <tr>
+                  <tr id='track-url' data-url='{{q.url}}' data-duration='{{q.durationSeconds}}' playing='no'>
                     <td>{{q.title}}</td>
                     <td>{{q.artist}}</td>
                     <td>{{q.duration}}</td>
                     <td>{{q.genre}}</td>
-                    <td><a id='track-url' data-url='{{q.url}}' data-duration='{{q.durationSeconds}}' playing='no'>Play</a></td>
                   </tr>
                 {% endfor %}
               </tbody>
@@ -153,20 +177,17 @@
                     volume: 100,
                     onconnect: function() {
                         track_url.attr('playing', 'yes');
-                        track_url.parent().css('border-right', '1px solid #a3a3a3');
+                        track_url.children().css('color', '#ff00bb');
                     },
                     onplay: function() {
-                        track_url.html('Pause');
                         track_url.click(function() {soundManager.pause('current');});
                     },
                     onpause: function() {
                         track_url.unbind('click');
-                        track_url.html('Play');
                         track_url.click(function() {soundManager.resume('current');});
                     },
                     onresume: function() {
                         track_url.unbind('click');
-                        track_url.html('Pause');
                         track_url.click(function() {soundManager.pause('current');});
                     },
                     whileplaying: function() {
@@ -174,17 +195,15 @@
                     },
                     onstop: function() {
                         $('#player-ball').css('left', '0');
-                        track_url.parent().css('border-right', 'none');
                         track_url.unbind('click');
-                        track_url.html('Play');
                         track_url.attr('playing', 'no');
+                        track_url.children().css('color', '#666');
                     },
                     onfinish: function() {
                         $('#player-ball').css('left', '0');
-                        track_url.parent().css('border-right', 'none');
                         track_url.unbind('click');
-                        track_url.html('Play');
                         track_url.attr('playing', 'no');
+                        track_url.children().css('color', '#666');
                     },
                 });
                 lastPlayed = track_url;

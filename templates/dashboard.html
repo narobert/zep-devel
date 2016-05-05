@@ -9,7 +9,7 @@
 
     <!-- START html -->
 
-    <nav class='navbar navbar-default navbar-fixed-top navbar-curved-border'>
+    <nav class='navbar navbar-fixed-top navbar-curved-border'>
       <div class='container-fluid'>
         <div class='navbar-header'>
           <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1' aria-expanded='false'>
@@ -18,19 +18,17 @@
             <span class='icon-bar'></span>
             <span class='icon-bar'></span>
           </button>
-          <a class='navbar-brand' href='/'>ZEP</a>
+          <a class='navbar-brand smaller-brand' href='/'>ZEP</a>
         </div>
         <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
           <ul class='nav navbar-nav'>
-            <li><a href='/'>just music.</a></li>
+            <li><a>just music.</a></li>
           </ul>
           <form class='navbar-form navbar-right' role='search' onsubmit='return false;'>
             <div class='form-group'>
-              <div class='input-group'>
-                <input type='text' class='form-control' id='search_input' placeholder='Songs, artists, or albums'>
-				<span class='input-group-addon' onclick='queryResults();'><span class='glyphicon glyphicon-search'></span></span>
-              </div>
+              <input type='text' class='form-control' id='search_input' placeholder='Songs, artists, albums, or genres'>
             </div>
+            <button type='submit' class='btn btn-search' onclick='queryResults();'>Search</button>
           </form>
         </div>
       </div>
@@ -50,7 +48,7 @@
                 <td>Search</td>
               </tr>
               <tr>
-                <td>Dashboard</td>
+                <td class='menu-active'>Dashboard</td>
               </tr>
               <tr>
                 <td>Playlist 1</td>
@@ -96,7 +94,7 @@
       </div>
     </div>
 
-    <nav class='navbar navbar-default navbar-fixed-bottom navbar-curved-border'>
+    <nav class='navbar navbar-fixed-bottom navbar-curved-border'>
       <div class='navbar-header'>
         <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1' aria-expanded='false'>
           <span class='sr-only'>Toggle navigation</span>
@@ -177,7 +175,7 @@
                     volume: 100,
                     onconnect: function() {
                         track_url.attr('playing', 'yes');
-                        track_url.children().css('color', '#ff00bb');
+                        track_url.children().addClass('colorPink');
                     },
                     onplay: function() {
                         track_url.click(function() {soundManager.pause('current');});
@@ -197,13 +195,13 @@
                         $('#player-ball').css('left', '0');
                         track_url.unbind('click');
                         track_url.attr('playing', 'no');
-                        track_url.children().css('color', '#666');
+                        track_url.children().removeClass('colorPink');
                     },
                     onfinish: function() {
                         $('#player-ball').css('left', '0');
                         track_url.unbind('click');
                         track_url.attr('playing', 'no');
-                        track_url.children().css('color', '#666');
+                        track_url.children().removeClass('colorPink');
                     },
                 });
                 lastPlayed = track_url;

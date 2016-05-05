@@ -41,6 +41,45 @@ tbody > tr:hover > td {
     background-color: #fff;
 }
 
+.navbar-curved-border .navbar-nav > li > a {
+    color: #666;
+}
+
+.navbar-curved-border .navbar-nav > li:hover > a {
+    cursor: default;
+    background-color: #fff;
+}
+
+.smaller-brand {
+    font-size: 13px;
+    padding: 16px 15px;
+    color: #333 !important;
+    font-weight: 700;
+}
+
+.smaller-brand:hover {
+    color: #ff00bb !important;
+}
+
+#search_input {
+    font-size: 13px;
+    color: #666;
+    border: 1px solid #ddd;
+    box-shadow: none;
+}
+
+.btn-search {
+    color: #666;
+    border-color: #ddd;
+    font-size: 13px;
+    padding: 7px 12px;
+    background-color: #fff;
+}
+
+.menu-active {
+    color: #ff00bb;
+}
+
 .player {
     position: absolute;
     bottom: 20px;
@@ -65,4 +104,8 @@ tbody > tr:hover > td {
 
 #player-ball:hover {
     border-color: #666;
+}
+
+.colorPink {
+    color: #ff00bb;
 }

@@ -94,6 +94,13 @@ tbody > tr:hover > td {
     color: #ff00bb;
 }
 
+.play-button {
+    position: absolute;
+    bottom: 30px;
+    left: 45px;
+    right: 45px;
+}
+
 .player {
     position: absolute;
     bottom: 40px;
@@ -101,7 +108,7 @@ tbody > tr:hover > td {
     background: white;
     border: 1px solid #ddd;
     border-radius: 4px;
-    left: 45px;
+    left: 200px;
     right: 45px;
 }
 

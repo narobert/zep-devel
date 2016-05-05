@@ -1,6 +1,6 @@
 body {
     padding-top: 72px;
-    padding-bottom: 72px;
+    padding-bottom: 112px;
     font-size: 13px;
 }
 
@@ -35,6 +35,10 @@ tbody > tr:hover > td {
     cursor: pointer;
 }
 
+.menu-table > tbody > tr > td {
+    border-color: #f9f9f9;
+}
+
 .navbar-curved-border {
     box-shadow: 0 0 5px rgba(0,0,0,.2);
     border: none;
@@ -50,6 +54,10 @@ tbody > tr:hover > td {
     background-color: #fff;
 }
 
+.navbar-large {
+    min-height: 90;
+}
+
 .smaller-brand {
     font-size: 13px;
     padding: 16px 15px;
@@ -63,6 +71,7 @@ tbody > tr:hover > td {
 
 #search_input {
     font-size: 13px;
+    min-width: 300px;
     color: #666;
     border: 1px solid #ddd;
     box-shadow: none;
@@ -76,13 +85,18 @@ tbody > tr:hover > td {
     background-color: #fff;
 }
 
+.menu-col {
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
 .menu-active {
     color: #ff00bb;
 }
 
 .player {
     position: absolute;
-    bottom: 20px;
+    bottom: 40px;
     height: 10px;
     background: white;
     border: 1px solid #ddd;

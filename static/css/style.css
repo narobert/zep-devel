@@ -96,9 +96,20 @@ tbody > tr:hover > td {
 
 .play-button {
     position: absolute;
-    bottom: 30px;
+    bottom: 21px;
+    left: 90px;
+}
+
+.previous-button {
+    position: absolute;
+    bottom: 29px;
     left: 45px;
-    right: 45px;
+}
+
+.next-button {
+    position: absolute;
+    bottom: 29px;
+    left: 151px;
 }
 
 .player {
@@ -108,7 +119,7 @@ tbody > tr:hover > td {
     background: white;
     border: 1px solid #ddd;
     border-radius: 4px;
-    left: 200px;
+    left: 300px;
     right: 45px;
 }
 

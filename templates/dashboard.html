@@ -60,7 +60,7 @@
             </tbody>
           </table>
         </div>
-        <div class='col-md-10'>
+        <div class='col-md-6'>
           <div id='query_results'>
           {% if query_results %}
             <table>
@@ -101,7 +101,7 @@
       <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
         <ul class='nav navbar-nav'>
           <div class='previous-button'><img src='/static/images/next-small.png'></div>
-          <div class='play-button'><img src='/static/images/play-largest.png'></div>
+          <div class='play-button'><img id='pauseorplay' src='/static/images/play-largest.png'></div>
           <div class='next-button'><img src='/static/images/next-small.png'></div>
           <div class='player'>
             <div id='player-ball'></div>
@@ -174,17 +174,20 @@
                     onconnect: function() {
                         track_url.attr('playing', 'yes');
                         track_url.children().addClass('colorPink');
+                        $('#pauseorplay').attr('src', '/static/images/pause.png');
                     },
                     onplay: function() {
-                        track_url.click(function() {soundManager.pause('current');});
+                        $('#pauseorplay').click(function() {soundManager.pause('current');});
                     },
                     onpause: function() {
-                        track_url.unbind('click');
-                        track_url.click(function() {soundManager.resume('current');});
+                        $('#pauseorplay').unbind('click');
+                        $('#pauseorplay').click(function() {soundManager.resume('current');});
+                        $('#pauseorplay').attr('src', '/static/images/play-largest.png');
                     },
                     onresume: function() {
-                        track_url.unbind('click');
-                        track_url.click(function() {soundManager.pause('current');});
+                        $('#pauseorplay').unbind('click');
+                        $('#pauseorplay').click(function() {soundManager.pause('current');});
+                        $('#pauseorplay').attr('src', '/static/images/pause.png');
                     },
                     whileplaying: function() {
                         $('#player-ball').css('left', (this.position/(duration*1000))*100 + '%');
@@ -194,12 +197,14 @@
                         track_url.unbind('click');
                         track_url.attr('playing', 'no');
                         track_url.children().removeClass('colorPink');
+                        $('#pauseorplay').attr('src', '/static/images/play-largest.png');
                     },
                     onfinish: function() {
                         $('#player-ball').css('left', '0');
                         track_url.unbind('click');
                         track_url.attr('playing', 'no');
                         track_url.children().removeClass('colorPink');
+                        $('#pauseorplay').attr('src', '/static/images/play-largest.png');
                     },
                 });
                 lastPlayed = track_url;

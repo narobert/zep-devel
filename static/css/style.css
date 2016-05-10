@@ -35,8 +35,22 @@ tbody > tr:hover > td {
     cursor: pointer;
 }
 
-.menu-table > tbody > tr > td {
-    border-color: #f9f9f9;
+.menu-items {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.menu-items:last-child {
+    margin: 0;
+}
+
+.menu-items:hover {
+    color: #0bf;
+    cursor: pointer;
+}
+
+.query-table {
+    width: 100%;
 }
 
 .navbar-curved-border {
@@ -85,13 +99,18 @@ tbody > tr:hover > td {
     background-color: #fff;
 }
 
-.menu-col {
+.menu-left {
     background-color: #f9f9f9;
-    border-radius: 4px;
+    border-radius: 10px;
+    padding: 10px 30px;
 }
 
 .menu-active {
     color: #ff00bb;
+}
+
+.menu-right {
+    padding: 0px;
 }
 
 .play-button {
@@ -144,4 +163,23 @@ tbody > tr:hover > td {
 
 .colorPink {
     color: #ff00bb;
+}
+
+.playlist {
+    float: left;
+    width: 30%;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    margin-left: 3.33%;
+    margin-bottom: 20px;
+}
+
+.playlist-items {
+    color: #666;
+    text-align: center;
+}
+
+.playlist-items:last-child {
+    margin: 0;
 }

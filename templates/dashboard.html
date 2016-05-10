@@ -36,36 +36,20 @@
 
     <div class='container-fluid'>
       <div class='row'>
-        <div class='col-md-2 menu-col'>
-          <table class='menu-table'>
-            <tbody>
-              <tr>
-                <td>Search</td>
-              </tr>
-              <tr>
-                <td class='menu-active'>Dashboard</td>
-              </tr>
-              <tr>
-                <td>Playlist 1</td>
-              </tr>
-              <tr>
-                <td>Playlist 2</td>
-              </tr>
-              <tr>
-                <td>New Playlist</td>
-              </tr>
-              <tr>
-                <td>Settings</td>
-              </tr>  
-            </tbody>
-          </table>
+        <div class='col-md-2 menu-left'>
+          <p class='menu-items'>Search</p>
+          <p class='menu-items menu-active'>Dashboard</p>
+          <p class='menu-items'>Saved</p>
+          <p class='menu-items'>New Playlist</p>
+          <p class='menu-items'>Settings</p>
         </div>
         <div class='col-md-6'>
           <div id='query_results'>
           {% if query_results %}
-            <table>
+            <table class='query-table'>
               <thead>
                 <tr>
+                  <th>#</th>
                   <th>TITLE</th>
                   <th>ARTIST</th>
                   <th>TIME</th>
@@ -75,6 +59,7 @@
               <tbody>
                 {% for q in query_results %}
                   <tr id='track-url' data-url='{{q.url}}' data-duration='{{q.durationSeconds}}' playing='no'>
+                    <td>{{forloop.counter}}</td>
                     <td>{{q.title}}</td>
                     <td>{{q.artist}}</td>
                     <td>{{q.duration}}</td>
@@ -84,6 +69,28 @@
               </tbody>
             </table>
           {% endif %}
+          </div>
+        </div>
+        <div class='col-md-4 menu-right'>
+          <div class='playlist'>
+            <p class='playlist-items'>Playlist name</p>
+            <p class='playlist-items'>0 songs</p>
+          </div>
+          <div class='playlist'>
+            <p class='playlist-items'>Playlist name</p>
+            <p class='playlist-items'>0 songs</p>
+          </div>
+          <div class='playlist'>
+            <p class='playlist-items'>Playlist name</p>
+            <p class='playlist-items'>0 songs</p>
+          </div>
+          <div class='playlist'>
+            <p class='playlist-items'>Playlist name</p>
+            <p class='playlist-items'>0 songs</p>
+          </div>
+          <div class='playlist'>
+            <p class='playlist-items'>Playlist name</p>
+            <p class='playlist-items'>0 songs</p>
           </div>
         </div>
       </div>
@@ -159,56 +166,51 @@
 
         var lastPlayed;
         $(document).on('click', '#track-url', function() {
-            if ($(this).attr('playing') == 'no') {
-                if (lastPlayed != undefined) {
-                    soundManager.destroySound('current');
-                }
-                var track_url = $(this);
-                var duration = track_url.attr('data-duration');
-                var current = soundManager.createSound({
-                    id: 'current',
-                    url: track_url.attr('data-url'),
-                    autoLoad: true,
-                    autoPlay: true,
-                    volume: 100,
-                    onconnect: function() {
-                        track_url.attr('playing', 'yes');
-                        track_url.children().addClass('colorPink');
-                        $('#pauseorplay').attr('src', '/static/images/pause.png');
-                    },
-                    onplay: function() {
-                        $('#pauseorplay').click(function() {soundManager.pause('current');});
-                    },
-                    onpause: function() {
-                        $('#pauseorplay').unbind('click');
-                        $('#pauseorplay').click(function() {soundManager.resume('current');});
-                        $('#pauseorplay').attr('src', '/static/images/play-largest.png');
-                    },
-                    onresume: function() {
-                        $('#pauseorplay').unbind('click');
-                        $('#pauseorplay').click(function() {soundManager.pause('current');});
-                        $('#pauseorplay').attr('src', '/static/images/pause.png');
-                    },
-                    whileplaying: function() {
-                        $('#player-ball').css('left', (this.position/(duration*1000))*100 + '%');
-                    },
-                    onstop: function() {
-                        $('#player-ball').css('left', '0');
-                        track_url.unbind('click');
-                        track_url.attr('playing', 'no');
-                        track_url.children().removeClass('colorPink');
-                        $('#pauseorplay').attr('src', '/static/images/play-largest.png');
-                    },
-                    onfinish: function() {
-                        $('#player-ball').css('left', '0');
-                        track_url.unbind('click');
-                        track_url.attr('playing', 'no');
-                        track_url.children().removeClass('colorPink');
-                        $('#pauseorplay').attr('src', '/static/images/play-largest.png');
-                    },
-                });
-                lastPlayed = track_url;
-            }
+            soundManager.destroySound('current');
+            var track_url = $(this);
+            var duration = track_url.attr('data-duration');
+            var current = soundManager.createSound({
+                id: 'current',
+                url: track_url.attr('data-url'),
+                autoLoad: true,
+                autoPlay: true,
+                volume: 100,
+                onconnect: function() {
+                    track_url.attr('playing', 'yes');
+                    track_url.children().addClass('colorPink');
+                    $('#pauseorplay').attr('src', '/static/images/pause.png');
+                },
+                onplay: function() {
+                    $('#pauseorplay').click(function() {soundManager.pause('current');});
+                },
+                onpause: function() {
+                    $('#pauseorplay').unbind('click');
+                    $('#pauseorplay').click(function() {soundManager.resume('current');});
+                    $('#pauseorplay').attr('src', '/static/images/play-largest.png');
+                },
+                onresume: function() {
+                    $('#pauseorplay').unbind('click');
+                    $('#pauseorplay').click(function() {soundManager.pause('current');});
+                    $('#pauseorplay').attr('src', '/static/images/pause.png');
+                },
+                whileplaying: function() {
+                    $('#player-ball').css('left', (this.position/(duration*1000))*100 + '%');
+                },
+                onstop: function() {
+                    $('#player-ball').css('left', '0');
+                    track_url.unbind('click');
+                    track_url.attr('playing', 'no');
+                    track_url.children().removeClass('colorPink');
+                    $('#pauseorplay').attr('src', '/static/images/play-largest.png');
+                },
+                onfinish: function() {
+                    $('#player-ball').css('left', '0');
+                    track_url.unbind('click');
+                    track_url.attr('playing', 'no');
+                    track_url.children().removeClass('colorPink');
+                    $('#pauseorplay').attr('src', '/static/images/play-largest.png');
+                },
+            });
         });
 
     </script>

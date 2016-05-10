@@ -97,19 +97,23 @@ tbody > tr:hover > td {
 .play-button {
     position: absolute;
     bottom: 21px;
-    left: 90px;
+    left: 85px;
 }
 
 .previous-button {
     position: absolute;
-    bottom: 29px;
+    bottom: 35px;
     left: 45px;
+}
+
+.previous-button img {
+    transform: rotate(180deg);
 }
 
 .next-button {
     position: absolute;
-    bottom: 29px;
-    left: 151px;
+    bottom: 35px;
+    left: 153px;
 }
 
 .player {
@@ -119,7 +123,7 @@ tbody > tr:hover > td {
     background: white;
     border: 1px solid #ddd;
     border-radius: 4px;
-    left: 300px;
+    left: 235px;
     right: 45px;
 }
 

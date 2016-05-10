@@ -37,13 +37,66 @@
     <div class='container-fluid'>
       <div class='row'>
         <div class='col-md-2 menu-left'>
-          <p class='menu-items'>Search</p>
-          <p class='menu-items menu-active'>Dashboard</p>
-          <p class='menu-items'>Saved</p>
-          <p class='menu-items'>New Playlist</p>
-          <p class='menu-items'>Settings</p>
+          <table class='menu-table'>
+            <thead>
+              <tr>
+                <th class='menu-active'>Dashboard</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Saved</td>
+              </tr>
+              <tr>
+                <td>New playlist</td>
+              </tr>
+              <tr>
+                <td>Settings</td>
+              </tr>
+              <tr>
+                <td>Logout</td>
+              </tr>
+            </tbody>
+          </table>   
         </div>
-        <div class='col-md-6'>
+        <div class='col-md-4 menu-middle'>
+          <div class='playlist'>
+            <div class='playlist-play'><img src='/static/images/play-large.png'></div>
+            <p class='playlist-items'>Playlist name</p>
+            <p class='playlist-items'>0 songs</p>
+            <p class='playlist-items'>Genre, genre, genre</p>
+            <p class='playlist-items'>Created by</p>
+          </div>
+          <div class='playlist'>
+            <div class='playlist-play'><img src='/static/images/play-large.png'></div>
+            <p class='playlist-items'>Playlist name</p>
+            <p class='playlist-items'>0 songs</p>
+            <p class='playlist-items'>Genre, genre, genre</p>
+            <p class='playlist-items'>Created by</p>
+          </div>
+          <div class='playlist'>
+            <div class='playlist-play'><img src='/static/images/play-large.png'></div>
+            <p class='playlist-items'>Playlist name</p>
+            <p class='playlist-items'>0 songs</p>
+            <p class='playlist-items'>Genre, genre, genre</p>
+            <p class='playlist-items'>Created by</p>
+          </div>
+          <div class='playlist'>
+            <div class='playlist-play'><img src='/static/images/play-large.png'></div>
+            <p class='playlist-items'>Playlist name</p>
+            <p class='playlist-items'>0 songs</p>
+            <p class='playlist-items'>Genre, genre, genre</p>
+            <p class='playlist-items'>Created by</p>
+          </div>
+          <div class='playlist'>
+            <div class='playlist-play'><img src='/static/images/play-large.png'></div>
+            <p class='playlist-items'>Playlist name</p>
+            <p class='playlist-items'>0 songs</p>
+            <p class='playlist-items'>Genre, genre, genre</p>
+            <p class='playlist-items'>Created by</p>
+          </div>
+        </div>
+        <div class='col-md-6 menu-right'>
           <div id='query_results'>
           {% if query_results %}
             <table class='query-table'>
@@ -69,28 +122,6 @@
               </tbody>
             </table>
           {% endif %}
-          </div>
-        </div>
-        <div class='col-md-4 menu-right'>
-          <div class='playlist'>
-            <p class='playlist-items'>Playlist name</p>
-            <p class='playlist-items'>0 songs</p>
-          </div>
-          <div class='playlist'>
-            <p class='playlist-items'>Playlist name</p>
-            <p class='playlist-items'>0 songs</p>
-          </div>
-          <div class='playlist'>
-            <p class='playlist-items'>Playlist name</p>
-            <p class='playlist-items'>0 songs</p>
-          </div>
-          <div class='playlist'>
-            <p class='playlist-items'>Playlist name</p>
-            <p class='playlist-items'>0 songs</p>
-          </div>
-          <div class='playlist'>
-            <p class='playlist-items'>Playlist name</p>
-            <p class='playlist-items'>0 songs</p>
           </div>
         </div>
       </div>
